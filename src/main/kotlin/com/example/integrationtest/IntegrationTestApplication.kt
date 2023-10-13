@@ -1,13 +1,10 @@
 package com.example.integrationtest
 
-import org.springframework.boot.autoconfigure.SpringBootApplication
-import org.springframework.boot.runApplication
 import org.springframework.cloud.openfeign.EnableFeignClients
+import org.springframework.context.annotation.ComponentScan
+import org.springframework.context.annotation.Configuration
 
-@SpringBootApplication
+@Configuration
 @EnableFeignClients
+@ComponentScan("com.example.integrationtest")
 class IntegrationTestApplication
-
-fun main(args: Array<String>) {
-	runApplication<IntegrationTestApplication>(*args)
-}
