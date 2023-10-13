@@ -4,7 +4,7 @@ import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 
-@FeignClient(name = "cpf-client", url = "\${cpf-client.url}")
+@FeignClient(name = "cpf-client", url = "\${cpf-client.url}", configuration = [CPFConfig::class])
 interface CPFClient {
 
     @GetMapping("/{cpf}")

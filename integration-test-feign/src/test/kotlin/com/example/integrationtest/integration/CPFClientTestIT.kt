@@ -1,6 +1,7 @@
 package com.example.integrationtest.integration
 
 import com.example.integrationtest.IntegrationTestApplication
+import com.example.integrationtest.exception.NotFoundException
 import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
@@ -51,7 +52,12 @@ class CPFClientTestIT {
     }
 
     @Test
-    fun `It throw should get CPF`() {
-        assertThrows<Exception> { cpfClient.findCpf("567") }
+    fun `It should throw when get CPF`() {
+        assertThrows<RuntimeException> { cpfClient.findCpf("567") }
+    }
+
+    @Test
+    fun `It should throw NotFoundException when CPF not found`() {
+        assertThrows<NotFoundException> { cpfClient.findCpf("890") }
     }
 }
